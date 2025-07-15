@@ -1,0 +1,78 @@
+
+import React from 'react';
+
+interface WordGridProps {
+  activeWords: string[];
+}
+
+const WordGrid = ({ activeWords }: WordGridProps) => {
+  const grid = [
+    ['I', 'T', 'L', 'I', 'S', 'A', 'S', 'T', 'H', 'P', 'M'],
+    ['A', 'C', 'Q', 'U', 'A', 'R', 'T', 'E', 'R', 'D', 'C'],
+    ['T', 'W', 'E', 'N', 'T', 'Y', 'F', 'I', 'V', 'E', 'X'],
+    ['H', 'A', 'L', 'F', 'S', 'T', 'E', 'N', 'F', 'T', 'O'],
+    ['P', 'A', 'S', 'T', 'O', 'R', 'U', 'N', 'E', 'R', 'U'],
+    ['S', 'I', 'X', 'T', 'H', 'R', 'E', 'E', 'N', 'I', 'N'],
+    ['S', 'E', 'V', 'E', 'N', 'T', 'W', 'E', 'L', 'V', 'E'],
+    ['T', 'E', 'N', 'S', 'E', 'L', 'E', 'V', 'E', 'N', 'D'],
+    ['F', 'O', 'U', 'R', 'F', 'I', 'V', 'E', 'S', 'I', 'X'],
+    ['E', 'I', 'G', 'H', 'T', 'W', 'O', 'N', 'I', 'N', 'E'],
+    ['T', 'E', 'N', 'S', 'E', 'O', 'C', 'L', 'O', 'C', 'K']
+  ];
+
+  const wordPositions = {
+    'IT': [[0, 0], [0, 1]],
+    'IS': [[0, 3], [0, 4]],
+    'A': [[0, 5]],
+    'QUARTER': [[1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8]],
+    'TWENTY': [[2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5]],
+    'FIVE': [[2, 6], [2, 7], [2, 8], [2, 9]],
+    'HALF': [[3, 0], [3, 1], [3, 2], [3, 3]],
+    'TEN': [[3, 5], [3, 6], [3, 7]],
+    'TO': [[3, 9], [3, 10]],
+    'PAST': [[4, 0], [4, 1], [4, 2], [4, 3]],
+    'ONE': [[4, 6], [4, 7], [4, 8]],
+    'SIX': [[5, 0], [5, 1], [5, 2]],
+    'THREE': [[5, 4], [5, 5], [5, 6], [5, 7], [5, 8]],
+    'NINE': [[5, 8], [5, 9], [5, 10], [6, 0]],
+    'SEVEN': [[6, 0], [6, 1], [6, 2], [6, 3], [6, 4]],
+    'TWELVE': [[6, 5], [6, 6], [6, 7], [6, 8], [6, 9], [6, 10]],
+    'ELEVEN': [[7, 3], [7, 4], [7, 5], [7, 6], [7, 7], [7, 8]],
+    'FOUR': [[8, 0], [8, 1], [8, 2], [8, 3]],
+    'EIGHT': [[9, 0], [9, 1], [9, 2], [9, 3], [9, 4]],
+    'TWO': [[9, 5], [9, 6], [9, 7]],
+    "O'CLOCK": [[10, 5], [10, 6], [10, 7], [10, 8], [10, 9], [10, 10]],
+    'MINUTES': [[0, 6], [0, 7], [0, 8], [0, 9], [0, 10], [1, 0], [1, 1]]
+  };
+
+  const isLetterActive = (row: number, col: number): boolean => {
+    return activeWords.some(word => {
+      const positions = wordPositions[word as keyof typeof wordPositions];
+      return positions?.some(([r, c]) => r === row && c === col);
+    });
+  };
+
+  return (
+    <div className="grid grid-cols-11 gap-1 p-8 bg-gray-900 rounded-2xl shadow-2xl border border-gray-700">
+      {grid.map((row, rowIndex) =>
+        row.map((letter, colIndex) => (
+          <div
+            key={`${rowIndex}-${colIndex}`}
+            className={`
+              w-12 h-12 flex items-center justify-center text-xl font-bold rounded-lg
+              transition-all duration-300 ease-in-out
+              ${isLetterActive(rowIndex, colIndex)
+                ? 'bg-white text-gray-900 shadow-lg shadow-white/30 scale-105'
+                : 'bg-gray-800 text-gray-600 hover:bg-gray-700'
+              }
+            `}
+          >
+            {letter}
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
+
+export default WordGrid;
