@@ -56,8 +56,8 @@ const WordClock = () => {
     
     // Hour words
     const hourWords = {
-      1: 'ONE', 2: 'TWO', 3: 'THREE', 4: 'FOUR', 5: 'FIVE', 6: 'SIX',
-      7: 'SEVEN', 8: 'EIGHT', 9: 'NINE', 10: 'TEN', 11: 'ELEVEN', 12: 'TWELVE'
+      1: 'HOURONE', 2: 'HOURTWO', 3: 'HOURTHREE', 4: 'HOURFOUR', 5: 'HOURFIVE', 6: 'HOURSIX',
+      7: 'HOURSEVEN', 8: 'HOUREIGHT', 9: 'HOURNINE', 10: 'HOURTEN', 11: 'HOURELEVEN', 12: 'HOURTWELVE'
     };
     
     timeWords.push(hourWords[displayHour as keyof typeof hourWords]);
