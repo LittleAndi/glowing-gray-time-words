@@ -20,7 +20,7 @@ const WordClock = () => {
     // Convert to 12-hour format
     const hour12 = hours % 12 || 12;
     
-    let timeWords = ['IT', 'IS'];
+    const timeWords = ['IT', 'IS'];
     
     // Minutes logic
     if (minutes >= 5 && minutes < 10) {
