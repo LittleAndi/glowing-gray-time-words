@@ -53,7 +53,7 @@ const WordGrid = ({ activeWords }: WordGridProps) => {
   };
 
   return (
-    <div className="grid grid-cols-11 gap-1 p-8 bg-gray-900 rounded-2xl shadow-2xl border border-gray-700">
+    <div className="grid grid-cols-12 gap-1 p-8 bg-gray-900 rounded-2xl shadow-2xl border border-gray-700">
       {grid.map((row, rowIndex) =>
         row.map((letter, colIndex) => (
           <div
