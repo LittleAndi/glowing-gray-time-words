@@ -17,7 +17,7 @@ const WordGrid = ({ activeWords }: WordGridProps) => {
     ['N', 'I', 'N', 'E', 'F', 'I', 'V', 'E', 'C', 'T', 'W', 'O'],
     ['E', 'I', 'G', 'H', 'T', 'F', 'E', 'L', 'E', 'V', 'E', 'N'],
     ['S', 'I', 'X', 'T', 'H', 'R', 'E', 'E', 'O', 'N', 'E', 'G'],
-    ['T', 'E', 'N', 'S', 'E', 'Z', 'O', 'C', 'L', 'O', 'C', 'K']
+    ['T', 'E', 'N', 'S', 'E', 'Z', 'O\'', 'C', 'L', 'O', 'C', 'K']
   ];
 
   const wordPositions = {
@@ -44,7 +44,7 @@ const WordGrid = ({ activeWords }: WordGridProps) => {
     'HOURTHREE': [[9, 3], [9, 4], [9, 5], [9, 6], [9, 7]],
     'HOURONE': [[9, 11], [9, 12], [9, 13]],
     'HOURTEN': [[10, 0], [10, 1], [10, 2]],
-    "O'CLOCK": [[10, 5], [10, 6], [10, 7], [10, 8], [10, 9], [10, 10]],
+    "O'CLOCK": [[10, 6], [10, 7], [10, 8], [10, 9], [10, 10], [10, 11]],
   };
 
   const isLetterActive = (row: number, col: number): boolean => {
