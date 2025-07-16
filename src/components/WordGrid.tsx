@@ -62,10 +62,10 @@ const WordGrid = ({ activeWords }: WordGridProps) => {
             key={`${rowIndex}-${colIndex}`}
             className={`
               w-12 h-12 flex items-center justify-center text-xl font-bold rounded-lg
-              transition-all duration-300 ease-in-out
+              bg-gray-800 transition-all duration-300 ease-in-out
               ${isLetterActive(rowIndex, colIndex)
-                ? 'bg-white text-gray-900 shadow-lg shadow-white/30 scale-105'
-                : 'bg-gray-800 text-gray-600 hover:bg-gray-700'
+                ? 'text-white shadow-lg shadow-white/20'
+                : 'text-gray-600 hover:text-gray-500'
               }
             `}
           >
