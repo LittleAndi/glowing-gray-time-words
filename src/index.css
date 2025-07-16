@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -101,5 +102,52 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.3;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));
+  }
+  10% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));
+  }
+  20% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
+  }
+  30% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));
+  }
+  40% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));
+  }
+  60% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.7));
+  }
+  70% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));
+  }
+  80% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 7px rgba(255,255,255,0.8));
+  }
+  90% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
   }
 }

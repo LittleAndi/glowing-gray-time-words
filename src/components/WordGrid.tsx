@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface WordGridProps {
   activeWords: string[];
 }
 
 const WordGrid = ({ activeWords }: WordGridProps) => {
+  const [previousActiveWords, setPreviousActiveWords] = useState<string[]>([]);
+  const [flickeringLetters, setFlickeringLetters] = useState<Set<string>>(new Set());
+
   const grid = [
     ['I', 'T', 'L', 'I', 'S', 'A', 'S', 'T', 'H', 'P', 'M', 'A'],
     ['A', 'C', 'Q', 'U', 'A', 'R', 'T', 'E', 'R', 'D', 'C', 'O'],
@@ -46,11 +49,39 @@ const WordGrid = ({ activeWords }: WordGridProps) => {
     "O'CLOCK": [[10, 5], [10, 6], [10, 7], [10, 8], [10, 9], [10, 10], [10, 11]],
   };
 
+  useEffect(() => {
+    const newlyActiveWords = activeWords.filter(word => !previousActiveWords.includes(word));
+    
+    if (newlyActiveWords.length > 0) {
+      const newFlickeringLetters = new Set<string>();
+      
+      newlyActiveWords.forEach(word => {
+        const positions = wordPositions[word as keyof typeof wordPositions];
+        positions?.forEach(([row, col]) => {
+          newFlickeringLetters.add(`${row}-${col}`);
+        });
+      });
+      
+      setFlickeringLetters(newFlickeringLetters);
+      
+      // Clear flickering effect after animation completes
+      setTimeout(() => {
+        setFlickeringLetters(new Set());
+      }, 600);
+    }
+    
+    setPreviousActiveWords(activeWords);
+  }, [activeWords, previousActiveWords]);
+
   const isLetterActive = (row: number, col: number): boolean => {
     return activeWords.some(word => {
       const positions = wordPositions[word as keyof typeof wordPositions];
       return positions?.some(([r, c]) => r === row && c === col);
     });
+  };
+
+  const isLetterFlickering = (row: number, col: number): boolean => {
+    return flickeringLetters.has(`${row}-${col}`);
   };
 
   return (
@@ -68,7 +99,14 @@ const WordGrid = ({ activeWords }: WordGridProps) => {
                   ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]'
                   : 'text-gray-600 hover:text-gray-500'
                 }
+                ${isLetterFlickering(rowIndex, colIndex) 
+                  ? 'animate-pulse' 
+                  : ''
+                }
               `}
+              style={isLetterFlickering(rowIndex, colIndex) ? {
+                animation: 'flicker 0.6s ease-in-out'
+              } : {}}
             >
               {letter}
             </span>
