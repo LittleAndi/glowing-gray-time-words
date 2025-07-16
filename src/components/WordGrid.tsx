@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface WordGridProps {
@@ -60,16 +59,19 @@ const WordGrid = ({ activeWords }: WordGridProps) => {
         row.map((letter, colIndex) => (
           <div
             key={`${rowIndex}-${colIndex}`}
-            className={`
-              w-12 h-12 flex items-center justify-center text-xl font-bold rounded-lg
-              bg-gray-800 transition-all duration-300 ease-in-out
-              ${isLetterActive(rowIndex, colIndex)
-                ? 'text-white shadow-lg shadow-white/20'
-                : 'text-gray-600 hover:text-gray-500'
-              }
-            `}
+            className="w-12 h-12 flex items-center justify-center bg-gray-800 rounded-lg"
           >
-            {letter}
+            <span
+              className={`
+                text-xl font-bold transition-all duration-300 ease-in-out
+                ${isLetterActive(rowIndex, colIndex)
+                  ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]'
+                  : 'text-gray-600 hover:text-gray-500'
+                }
+              `}
+            >
+              {letter}
+            </span>
           </div>
         ))
       )}
