@@ -105,7 +105,7 @@ const WordGrid = ({ activeWords }: WordGridProps) => {
                 }
               `}
               style={isLetterFlickering(rowIndex, colIndex) ? {
-                animation: 'flicker 0.6s ease-in-out'
+                animation: 'flicker 1.5s ease-in-out'
               } : {}}
             >
               {letter}
