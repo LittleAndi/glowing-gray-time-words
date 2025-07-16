@@ -28,7 +28,7 @@ const WordClock = () => {
     } else if (minutes >= 10 && minutes < 15) {
       timeWords.push('TEN', 'MINUTES', 'PAST');
     } else if (minutes >= 15 && minutes < 20) {
-      timeWords.push('FIFTEEN', 'MINUTES', 'PAST');
+      timeWords.push('QUARTER', 'PAST');
     } else if (minutes >= 20 && minutes < 25) {
       timeWords.push('TWENTY', 'MINUTES', 'PAST');
     } else if (minutes >= 25 && minutes < 30) {
@@ -40,7 +40,7 @@ const WordClock = () => {
     } else if (minutes >= 40 && minutes < 45) {
       timeWords.push('TWENTY', 'MINUTES', 'TO');
     } else if (minutes >= 45 && minutes < 50) {
-      timeWords.push('FIFTEEN', 'MINUTES', 'TO');
+      timeWords.push('QUARTER', 'TO');
     } else if (minutes >= 50 && minutes < 55) {
       timeWords.push('TEN', 'MINUTES', 'TO');
     } else if (minutes >= 55) {
