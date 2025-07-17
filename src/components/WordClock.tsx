@@ -34,7 +34,7 @@ const WordClock = () => {
     } else if (minutes >= 25 && minutes < 30) {
       timeWords.push('TWENTY', 'FIVE', 'MINUTES', 'PAST');
     } else if (minutes >= 30 && minutes < 35) {
-      timeWords.push('THIRTY', 'MINUTES', 'PAST');
+      timeWords.push('HALF', 'PAST');
     } else if (minutes >= 35 && minutes < 40) {
       timeWords.push('TWENTY', 'FIVE', 'MINUTES', 'TO');
     } else if (minutes >= 40 && minutes < 45) {
